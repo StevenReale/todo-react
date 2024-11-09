@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ToDoList from './Components/ToDoList';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -29,17 +30,7 @@ function App() {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button onClick={addTask}>Add Task</button>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index} style={{ textDecoration: task.completed ? 'line-through' : '' }}>
-            {task.text}
-            <button onClick={() => toggleComplete(index)}>
-              {task.completed ? 'Undo' : 'Complete'}
-            </button>
-            <button onClick={() => deleteTask(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <ToDoList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask} />
     </div>
   );
 }
