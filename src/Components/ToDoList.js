@@ -1,17 +1,12 @@
 import React from 'react';
+import ToDoItem from './ToDoItem';
 
 export default function ToDoList({tasks, toggleComplete, deleteTask}) {
     return (
         <ul>
             {tasks.map((task, index) => (
-                <li key={index} style={{ textDecoration: task.completed ? 'line-through' : '' }}>
-                {task.text}
-                <button onClick={() => toggleComplete(index)}>
-                    {task.completed ? 'Undo' : 'Complete'}
-                </button>
-                <button onClick={() => deleteTask(index)}>Delete</button>
-                </li>
+                <ToDoItem key={index} task={task} index={index} toggleComplete={toggleComplete} deleteTask={deleteTask} />
             ))}
-      </ul>
+        </ul>
     );
 }
